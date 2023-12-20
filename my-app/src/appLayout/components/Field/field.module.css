@@ -8,4 +8,14 @@
 .buttonField {
 	width: 33%;
 	height: 33%;
+	cursor: pointer;
+	font-size: 63px;
+	background: white;
+}
+.buttonField__selected {
+	width: 33%;
+	height: 33%;
+	cursor: pointer;
+	font-size: 63px;
+	background: green;
 }

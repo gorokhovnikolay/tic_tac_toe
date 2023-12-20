@@ -8,13 +8,6 @@ export const App = () => {
 	const [isDraw, setIsDraw] = useState(false);
 	const [field, setField] = useState(['', '', '', '', '', '', '', '', '']);
 
-	const resetGame = () => {
-		setCurrentPlayer('X');
-		setIsGameEnded(false);
-		setIsDraw(false);
-		setField(['', '', '', '', '', '', '', '', '']);
-	};
-
 	const state = {
 		currentPlayer,
 		setCurrentPlayer,
@@ -24,7 +17,6 @@ export const App = () => {
 		setIsDraw,
 		field,
 		setField,
-		resetGame,
 	};
 
 	return <AppLayout {...state} />;

@@ -4,6 +4,7 @@ import { FieldLayout } from './FieldLayout';
 
 let arrPlus = [];
 let arrZero = [];
+let copyField = [];
 
 const WIN_PATTERNS = [
 	[0, 1, 2],
@@ -22,6 +23,28 @@ const findeWinerVariant = (inspectedArr) => {
 	});
 };
 
+const addTicTacToe = (
+	{ field, setField, setCurrentPlayer, setIsGameEnded, setIsDraw, index },
+	symbol,
+) => {
+	copyField = [...field];
+	copyField[index] = symbol;
+	setField(copyField);
+	setCurrentPlayer(symbol === 'X' ? 'O' : 'X');
+	symbol === 'X' ? arrPlus.push(index) : arrZero.push(index);
+
+	if (findeWinerVariant(symbol === 'X' ? arrPlus : arrZero)) {
+		setCurrentPlayer(symbol);
+		setIsGameEnded(true);
+		arrPlus = [];
+		arrZero = [];
+	} else if (!copyField.includes('')) {
+		setIsDraw(true);
+		arrPlus = [];
+		arrZero = [];
+	}
+};
+
 export const Field = ({
 	field,
 	setField,
@@ -33,37 +56,20 @@ export const Field = ({
 }) => {
 	const pressButton = (item, index) => {
 		if (item === '' && !isGameEnded) {
+			const stateTicTacToe = {
+				field,
+				setField,
+				setCurrentPlayer,
+				setIsGameEnded,
+				setIsDraw,
+				index,
+			};
 			switch (currentPlayer) {
 				case 'X':
-					const newArr1 = [...field];
-					newArr1[index] = 'X';
-					setField(newArr1);
-					setCurrentPlayer('O');
-					arrPlus.push(index);
-
-					if (findeWinerVariant(arrPlus)) {
-						setCurrentPlayer('X');
-						setIsGameEnded(true);
-						arrPlus = [];
-						arrZero = [];
-					} else if (!newArr1.includes('')) {
-						setIsDraw(true);
-					}
+					addTicTacToe(stateTicTacToe, 'X');
 					break;
 				case 'O':
-					const newArr2 = [...field];
-					newArr2[index] = 'O';
-					setField(newArr2);
-					setCurrentPlayer('X');
-					arrZero.push(index);
-					if (findeWinerVariant(arrZero)) {
-						setCurrentPlayer('O');
-						setIsGameEnded(true);
-						arrZero = [];
-						arrPlus = [];
-					} else if (!newArr2.includes('')) {
-						setIsDraw(true);
-					}
+					addTicTacToe(stateTicTacToe, 'O');
 					break;
 
 				default:

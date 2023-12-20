@@ -8,7 +8,11 @@ export const FieldLayout = ({ field, pressButton }) => {
 				return (
 					<button
 						onClick={() => pressButton(item, index)}
-						className={styles.buttonField}
+						className={
+							item === ''
+								? styles.buttonField
+								: styles.buttonField__selected
+						}
 						key={index}
 					>
 						{item}

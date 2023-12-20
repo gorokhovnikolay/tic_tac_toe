@@ -8,7 +8,6 @@ export const AppLayout = (state) => {
 		<div className={styles.app}>
 			<Field {...state} />
 			<Information {...state} />
-			<button onClick={() => state.resetGame()}>Начать заново</button>
 		</div>
 	);
 };

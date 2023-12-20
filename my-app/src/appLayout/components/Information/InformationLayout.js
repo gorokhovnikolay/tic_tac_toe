@@ -1,5 +1,10 @@
 import React from 'react';
 
-export const InformationLayout = ({ message }) => {
-	return <div>{message}</div>;
+export const InformationLayout = ({ message, resetGame }) => {
+	return (
+		<>
+			<div>{message}</div>
+			<button onClick={() => resetGame()}>Начать заново</button>
+		</>
+	);
 };
