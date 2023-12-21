@@ -11,6 +11,7 @@
 	cursor: pointer;
 	font-size: 63px;
 	background: white;
+	border-radius: 12px;
 }
 .buttonField__selected {
 	width: 33%;
@@ -18,4 +19,20 @@
 	cursor: pointer;
 	font-size: 63px;
 	background: green;
+	border-radius: 12px;
+	color: white;
+}
+
+.resetBtn {
+	margin-top: 15px;
+	padding: 16px;
+	border-radius: 13px;
+	border: 1px solid green;
+	background: white;
+	cursor: pointer;
+}
+
+.resetBtn:hover {
+	background: green;
+	color: white;
 }

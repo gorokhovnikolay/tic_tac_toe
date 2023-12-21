@@ -77,11 +77,20 @@ export const Field = ({
 			}
 		}
 	};
+	const resetGame = () => {
+		setCurrentPlayer('X');
+		setIsGameEnded(false);
+		setIsDraw(false);
+		setField(['', '', '', '', '', '', '', '', '']);
+		arrPlus = [];
+		arrZero = [];
+	};
 
-	return <FieldLayout field={field} pressButton={pressButton} />;
+	return <FieldLayout field={field} pressButton={pressButton} resetGame={resetGame} />;
 };
 
 FieldLayout.propTypes = {
 	field: PropTypes.array,
 	pressButton: PropTypes.func,
+	resetGame: PropTypes.func,
 };

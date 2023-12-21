@@ -2,17 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InformationLayout } from './InformationLayout';
 
-export const Information = ({
-	isDraw,
-	isGameEnded,
-	currentPlayer,
-	setCurrentPlayer,
-	setIsGameEnded,
-	setIsDraw,
-	setField,
-}) => {
-	let message = '';
+let message = '';
 
+export const Information = ({ isDraw, isGameEnded, currentPlayer }) => {
 	if (!isDraw && isGameEnded) {
 		message = `Победа: ${currentPlayer}`;
 	} else if (!isDraw && !isGameEnded) {
@@ -21,16 +13,10 @@ export const Information = ({
 		message = `Ничья`;
 	}
 
-	const resetGame = () => {
-		setCurrentPlayer('X');
-		setIsGameEnded(false);
-		setIsDraw(false);
-		setField(['', '', '', '', '', '', '', '', '']);
-	};
-
-	return <InformationLayout message={message} resetGame={resetGame} />;
+	return <InformationLayout message={message} isGameEnded={isGameEnded} />;
 };
 
 Information.propTypes = {
 	message: PropTypes.string,
+	isGameEnded: PropTypes.bool,
 };

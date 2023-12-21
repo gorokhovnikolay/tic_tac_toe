@@ -6,8 +6,8 @@ import styles from './App.module.css';
 export const AppLayout = (state) => {
 	return (
 		<div className={styles.app}>
-			<Field {...state} />
 			<Information {...state} />
+			<Field {...state} />
 		</div>
 	);
 };
